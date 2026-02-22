@@ -1,0 +1,47 @@
+
+alert("weather.js running....")
+async function getWeatherData() {
+  const url =
+    "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true";
+
+    try {
+    const request = new Request(url);
+    const response = await fetch(request);
+    const data = await response.json();
+
+    const tempUnit = data.current_weather_units.temperature;
+    const temp = data.current_weather.temperature;
+    const tempEl = document.querySelector(".t1");
+    
+    if(tempEl)
+    {
+         tempEl.textContent = temp+tempUnit;
+    }
+    else
+    {
+        console.log("Span element t1 not found.");
+    }          
+        
+    } catch (error) {
+
+        console.error("Error", error);
+        
+    }   
+    
+}
+
+getWeatherData();
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
