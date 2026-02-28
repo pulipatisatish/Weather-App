@@ -1,5 +1,5 @@
 
-alert("weather.js running....")
+//alert("weather.js running....")
 async function getWeatherData() {
   const url =
     "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true";
@@ -12,10 +12,25 @@ async function getWeatherData() {
     const tempUnit = data.current_weather_units.temperature;
     const temp = data.current_weather.temperature;
     const tempEl = document.querySelector(".t1");
+
+    const timeUnit = data.current_weather_units.time;
+    const time = data.current_weather.time;
+    const timeEl = document.querySelector(".td");
+
+    const formatDate = new Date(time);
+    const day = formatDate.getDay();
+    const month = formatDate.getMonth();
+    const date = formatDate.getDate();
+    const year = formatDate.getFullYear();
+
+    const displayDate = day +","+ date +""+ month + "," + year; 
+
+
     
-    if(tempEl)
+    if(tempEl||timeEl)
     {
          tempEl.textContent = temp+tempUnit;
+        timeEl.textContent = displayDate ;
     }
     else
     {
