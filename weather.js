@@ -13,21 +13,24 @@ async function getWeatherData() {
     const temp = data.current_weather.temperature;
     const tempEl = document.querySelector(".t1");
 
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const months = ["January", "February","March","April","May","June","July","August","September","December"];
+
     const timeUnit = data.current_weather_units.time;
     const time = data.current_weather.time;
     const timeEl = document.querySelector(".td");
 
     const formatDate = new Date(time);
-    const day = formatDate.getDay();
-    const month = formatDate.getMonth();
+    const day = days[formatDate.getDay()];
+    const month = months[formatDate.getMonth()];
     const date = formatDate.getDate();
     const year = formatDate.getFullYear();
 
-    const displayDate = day +","+ date +""+ month + "," + year; 
+    const displayDate = day + ","+ date  +" \  "+ month + "," + year; 
 
 
     
-    if(tempEl||timeEl)
+    if(tempEl && timeEl)
     {
          tempEl.textContent = temp+tempUnit;
         timeEl.textContent = displayDate ;
