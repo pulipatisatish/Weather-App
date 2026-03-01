@@ -25,15 +25,18 @@ async function getWeatherData() {
     const month = months[formatDate.getMonth()];
     const date = formatDate.getDate();
     const year = formatDate.getFullYear();
+    const displayDate = day + "  " + "" +","+""+ date  +"  "+ month + "," + year; 
 
-    const displayDate = day + ","+ date  +" \  "+ month + "," + year; 
-
+    const windSpeedUnit = data.current_weather_units.windspeed;
+    const windSpeed = data.current_weather.windspeed;
+    const windSpeedEl = document.querySelector(".wind-speed");
 
     
-    if(tempEl && timeEl)
+    if(tempEl && timeEl && windSpeedEl )
     {
          tempEl.textContent = temp+tempUnit;
-        timeEl.textContent = displayDate ;
+         timeEl.textContent = displayDate ;
+         windSpeedEl.textContent = windSpeed + windSpeedUnit;
     }
     else
     {
