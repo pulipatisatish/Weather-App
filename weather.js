@@ -2,7 +2,7 @@
 //alert("weather.js running....")
 async function getWeatherData() {
   const url =
-    "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true";
+    "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true&hourly=relativehumidity_2m";
 
     try {
     const request = new Request(url);
