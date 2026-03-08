@@ -1,126 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather Now</title>
-  <link href = "style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Now</title>
+        <link href="style.css" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <div class="logo"><span>☀</span> Weather Now</div>
 
-  
-</head>
-<body>
+                <button class="units-btn">⚙ Units</button>
+            </header>
 
-  <div class="container">
+            <!-- Hero -->
+            <section class="hero">
+                <h1>How’s the sky looking today?</h1>
 
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        <span>☀</span> Weather Now
-      </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search for a place..." />
+                    <button>Search</button>
+                </div>
+            </section>
 
-      <button class="units-btn">⚙ Units</button>
-    </header>
+            <!-- Main Content -->
+            <div class="main">
+                <!-- Left -->
+                <div>
+                    <!-- Weather Card -->
+                    <div class="weather-card">
+                        <div class="location">
+                            <h2>Berlin, Germany</h2>
+                            <p class="date-time">date and time</p>
+                        </div>
 
+                        <div class="temp1">
+                            <span class="temp"> </span>
+                        </div>
+                    </div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>How’s the sky looking today?</h1>
+                    <!-- Stats -->
+                    <div class="stats">
+                        <div class="stat-card">
+                            <p>Feels Like</p>
+                            <h3>64°</h3>
+                        </div>
 
-      <div class="search-box">
-        <input type="text" placeholder="Search for a place...">
-        <button>Search</button>
-      </div>
-    </section>
+                        <div class="stat-card">
+                            <p>Humidity</p>
+                            <h3 class="humidityEl"></h3>
+                        </div>
 
+                        <div class="stat-card">
+                            <p>Wind</p>
+                            <h3 class="wind-speed">9 mph</h3>
+                        </div>
 
-    <!-- Main Content -->
-    <div class="main">
+                        <div class="stat-card">
+                            <p>Precipitation</p>
+                            <h3 class="date"></h3>
+                        </div>
+                    </div>
 
-      <!-- Left -->
-      <div>
+                    <!-- Daily -->
+                    <div class="daily">
+                        <h3>Daily forecast</h3>
 
-        <!-- Weather Card -->
-        <div class="weather-card">
-          <div class="location">
-            <h2>Berlin, Germany</h2>
-            <p class = "td">date and time</p>
-          </div>
+                        <div class="daily-grid">
+                            <div class="day-card">
+                                Tue<span>🌧</span>68° / 57°
+                            </div>
+                            <div class="day-card">
+                                Wed<span>🌧</span>70° / 59°
+                            </div>
+                            <div class="day-card">
+                                Thu<span>☀</span>75° / 57°
+                            </div>
+                            <div class="day-card">
+                                Fri<span>⛅</span>77° / 55°
+                            </div>
+                            <div class="day-card">
+                                Sat<span>⛈</span>70° / 59°
+                            </div>
+                            <div class="day-card">
+                                Sun<span>🌧</span>77° / 61°
+                            </div>
+                            <div class="day-card">
+                                Mon<span>🌫</span>75° / 59°
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="temp1">
-            <span class="temp" > </span> 
-          </div>
+                <!-- Right / Hourly -->
+                <div class="hourly">
+                    <div class="hourly-header">
+                        <h3>Hourly forecast</h3>
+
+                        <select>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                        </select>
+                    </div>
+
+                    <div class="hour-item"><span>3 PM ☁</span><b>68°</b></div>
+                    <div class="hour-item"><span>4 PM ⛅</span><b>68°</b></div>
+                    <div class="hour-item"><span>5 PM ☀</span><b>68°</b></div>
+                    <div class="hour-item"><span>6 PM ☁</span><b>66°</b></div>
+                    <div class="hour-item"><span>7 PM 🌧</span><b>66°</b></div>
+                    <div class="hour-item"><span>8 PM 🌫</span><b>64°</b></div>
+                    <div class="hour-item"><span>9 PM ☁</span><b>63°</b></div>
+                    <div class="hour-item"><span>10 PM ☁</span><b>63°</b></div>
+                </div>
+            </div>
         </div>
-
-        <!-- Stats -->
-        <div class="stats">
-          <div class="stat-card">
-            <p>Feels Like</p>
-            <h3>64°</h3>
-          </div>
-
-          <div class="stat-card">
-            <p>Humidity</p>
-            <h3>46%</h3>
-          </div>
-
-          <div class="stat-card">
-            <p>Wind</p>
-            <h3 class ="wind-speed">9 mph</h3>
-          </div>
-
-          <div class="stat-card">
-            <p>Precipitation</p>
-            <h3>0 in</h3>
-          </div>
-        </div>
-
-        <!-- Daily -->
-        <div class="daily">
-          <h3>Daily forecast</h3>
-
-          <div class="daily-grid">
-
-            <div class="day-card">Tue<span>🌧</span>68° / 57°</div>
-            <div class="day-card">Wed<span>🌧</span>70° / 59°</div>
-            <div class="day-card">Thu<span>☀</span>75° / 57°</div>
-            <div class="day-card">Fri<span>⛅</span>77° / 55°</div>
-            <div class="day-card">Sat<span>⛈</span>70° / 59°</div>
-            <div class="day-card">Sun<span>🌧</span>77° / 61°</div>
-            <div class="day-card">Mon<span>🌫</span>75° / 59°</div>
-
-          </div>
-        </div>
-
-      </div>
-
-
-      <!-- Right / Hourly -->
-      <div class="hourly">
-
-        <div class="hourly-header">
-          <h3>Hourly forecast</h3>
-
-          <select>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-          </select>
-        </div>
-
-        <div class="hour-item"><span>3 PM ☁</span><b>68°</b></div>
-        <div class="hour-item"><span>4 PM ⛅</span><b>68°</b></div>
-        <div class="hour-item"><span>5 PM ☀</span><b>68°</b></div>
-        <div class="hour-item"><span>6 PM ☁</span><b>66°</b></div>
-        <div class="hour-item"><span>7 PM 🌧</span><b>66°</b></div>
-        <div class="hour-item"><span>8 PM 🌫</span><b>64°</b></div>
-        <div class="hour-item"><span>9 PM ☁</span><b>63°</b></div>
-        <div class="hour-item"><span>10 PM ☁</span><b>63°</b></div>
-
-      </div>
-
-    </div>
-
-  </div> 
-  <script src="weather.js"></script>
-</body>
+        <script src="weather.js"></script>
+    </body>
 </html>
