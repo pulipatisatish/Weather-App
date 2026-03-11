@@ -1,8 +1,9 @@
 class WeatherApp {
     constructor() {
         this.url =
-            "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true&hourly=relativehumidity_2m";
+            "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true&hourly=relativehumidity_2m&hourly=precipitation_probability";
         // this.dateElement = document.querySelector(".date");
+        this.precipitationElement = document.querySelector(".precipitation");
     }
 
     async getWeatherData() {
@@ -15,6 +16,7 @@ class WeatherApp {
             this.displayDateAndTime(data);
             this.displayWindSpeed(data);
             this.displayHumidity(data);
+            this.displayPrecipitation(data);
             // this.updateDate(data)
         } catch (error) {
             console.error("Error", error);
@@ -122,6 +124,19 @@ class WeatherApp {
         } catch (error) {
             console.error("Error", error);
         }
+    }
+
+    displayPrecipitation(data){
+        const humidity_unit = data.hourly_units.relativehumidity_2m;
+
+            const currentTime = data.current_weather.time;
+            const currentHour = currentTime.slice(0, 13) + ":00";
+            const hourlyTimeArray = data.hourly.time;
+            const currentHourIndex = hourlyTimeArray.indexOf(currentHour);
+            const precipitationArray = data.hourly.precipitation_probability;
+            const currentPrecipitation_value = precipitationArray[currentHourIndex];
+            this.precipitationElement.textContent = currentPrecipitation_value;
+
     }
 }
 
