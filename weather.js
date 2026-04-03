@@ -2,6 +2,9 @@ class WeatherApp {
     constructor() {
         this.url =
             "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true&hourly=relativehumidity_2m&hourly=precipitation_probability";
+            
+           
+
         // this.dateElement = document.querySelector(".date");
         this.precipitationElement = document.querySelector(".precipitation");
     }
@@ -12,11 +15,18 @@ class WeatherApp {
             const response = await fetch(request);
             const data = await response.json();
 
+            const currentTime = data.current_weather.time;
+            const currentHour = currentTime.slice(0, 13) + ":00";
+            const hourlyTimeArray = data.hourly.time;
+            const currentHourIndex = hourlyTimeArray.indexOf(currentHour);
+
+           
+
             this.displayTemperature(data);
             this.displayDateAndTime(data);
             this.displayWindSpeed(data);
-            this.displayHumidity(data);
-            this.displayPrecipitation(data);
+            this.displayHumidity(data , currentHourIndex);
+            this.displayPrecipitation(data , currentHourIndex);
             // this.updateDate(data)
         } catch (error) {
             console.error("Error", error);
@@ -106,16 +116,16 @@ class WeatherApp {
         }
     }
 
-    displayHumidity(data) {
+    displayHumidity(data , currentHourIndex) {
         try {
             const humidity_unit = data.hourly_units.relativehumidity_2m;
-
-            const currentTime = data.current_weather.time;
-            const currentHour = currentTime.slice(0, 13) + ":00";
-            const hourlyTimeArray = data.hourly.time;
-            const currentHourIndex = hourlyTimeArray.indexOf(currentHour);
+            //const currentTime = data.current_weather.time;
+          //  const currentHour = currentTime.slice(0, 13) + ":00";
+           // const hourlyTimeArray = data.hourly.time;
+            //const currentHourIndex = hourlyTimeArray.indexOf(currentHour);
             const humidityArray = data.hourly.relativehumidity_2m;
             const currentHumidity_value = humidityArray[currentHourIndex];
+           
 
             const humidityEl = document.querySelector(".humidityEl");
             if (humidityEl) {
@@ -126,16 +136,36 @@ class WeatherApp {
         }
     }
 
-    displayPrecipitation(data){
-        const humidity_unit = data.hourly_units.relativehumidity_2m;
+    displayPrecipitation(data , currentHourIndex){
 
-            const currentTime = data.current_weather.time;
-            const currentHour = currentTime.slice(0, 13) + ":00";
-            const hourlyTimeArray = data.hourly.time;
-            const currentHourIndex = hourlyTimeArray.indexOf(currentHour);
-            const precipitationArray = data.hourly.precipitation_probability;
-            const currentPrecipitation_value = precipitationArray[currentHourIndex];
-            this.precipitationElement.textContent = currentPrecipitation_value;
+        try {
+
+        const precipitation_unit = data.hourly_units.precipitation_probability;   
+        const precipitationArray = data.hourly.precipitation_probability;    
+        
+        const pre_Current_value = precipitationArray[currentHourIndex];
+
+
+       // const precipitationArray = data1.hourly.precipitation_probability;
+       // const currentPrecipitationValue = precipitationArray[pre_hourlyTimeIndex];
+
+
+       //const pre_hourlyTimeIndex = 
+
+        if(this.precipitationElement){
+               this.precipitationElement.textContent = pre_Current_value + precipitation_unit;
+            }
+
+            
+        } catch (error) {
+
+            
+            console.error("Error", error);
+
+            
+        }    
+
+        
 
     }
 }
