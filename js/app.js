@@ -1,3 +1,5 @@
+
+
 weatherData = {
     location: "Melbourne , Australia",
     date: "05/04/2026",
@@ -7,4 +9,7 @@ weatherData = {
     perecipitation: "12",
     temp: "-7",
 };
+
+
+
 

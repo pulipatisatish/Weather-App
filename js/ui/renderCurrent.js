@@ -1,13 +1,26 @@
 class CurrentWeatherUI {
-    constructor(weatherData) {
-        this.weatherData = weatherData;
+    constructor() {
+        
         this.dateEl = document.querySelector(".date-time");
-        this.locationEl = document.querySelector(".location");
+        this.locationEl = document.querySelector(".location h2");
         this.feels_likeEL = document.querySelector(".feels-like");
         this.humidityEl = document.querySelector(".humidity");
         this.windEl = document.querySelector(".wind-speed");
         this.perecipitationEl = document.querySelector(".precipitation");
         this.temp1El = document.querySelector(".temp");
+    }
+
+
+    renderHourlyData(weatherData){
+    this.weatherData = weatherData;
+    this.updateDate();
+    this.updateFeelsLike();
+    this.updateHumidity();
+    this.updateLocation();
+    this.updatePrecipitation();
+    this.updateTemperature();
+    this.updateWind();
+
     }
 
     updateDate() {
@@ -35,11 +48,5 @@ class CurrentWeatherUI {
     }
 }
 
-const appCurrent = new CurrentWeatherUI(weatherData);
-appCurrent.updateDate();
-appCurrent.updateFeelsLike();
-appCurrent.updateHumidity();
-appCurrent.updateLocation();
-appCurrent.updatePrecipitation();
-appCurrent.updateWind();
-appCurrent.updateTemperature();
+const appCurrent = new CurrentWeatherUI();
+appCurrent.renderHourlyData(weatherData);
